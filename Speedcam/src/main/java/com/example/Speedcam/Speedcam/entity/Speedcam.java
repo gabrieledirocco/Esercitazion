@@ -15,6 +15,9 @@ public class Speedcam {
     @OneToMany(mappedBy = "speedcam", cascade = CascadeType.ALL)
     private List<Fine> fineList;
 
+    public Speedcam() {
+    }
+
     public Speedcam(int id, String location, List<Fine> fineList) {
         this.id = id;
         this.location = location;

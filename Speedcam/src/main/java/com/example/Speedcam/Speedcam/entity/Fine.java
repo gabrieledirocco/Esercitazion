@@ -18,7 +18,7 @@ public class Fine {
     private LocalDate deadline;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id_fine")
+    @JoinColumn(name = "id_speedcam")
     private Speedcam speedcam;
 
     @ManyToOne(optional = false)
