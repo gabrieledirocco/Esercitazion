@@ -4,18 +4,19 @@ package com.example.Speedcam.Speedcam.entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "detail")
 public class Detail {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "fiscal_code")
+    @Column(name = "fiscal_code", nullable = false)
     private String fiscalCode;
-    @Column(name = "phone_number")
+    @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
-    @Column(name = "address")
+    @Column(name = "address", nullable = false)
     private String address;
-    @OneToOne(mappedBy = "registry", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "detail", cascade = CascadeType.ALL)
     private Registry registry;
 
     public Detail() {

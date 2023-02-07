@@ -5,19 +5,21 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "registry")
 public class Registry {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
-    @Column(name = "surname")
+    @Column(name = "surname", nullable = false)
     private String surname;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_detail")
     private Detail detail;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "registry", cascade = CascadeType.ALL)
     private List<Fine> fineList;
 
     public Registry(Integer id, String name, String surname, Detail detail) {

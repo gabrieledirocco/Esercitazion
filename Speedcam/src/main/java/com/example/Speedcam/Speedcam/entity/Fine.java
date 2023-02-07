@@ -6,22 +6,23 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "fine")
 public class Fine {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    @Column(name = "date")
+    private Integer id;
+    @Column(name = "date", nullable = false)
     private LocalDateTime date;
-    @Column(name = "dead_line")
+    @Column(name = "dead_line", nullable = false)
     private LocalDate deadline;
 
-    @ManyToOne
-    @JoinColumn(name= "id_fine")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_fine")
     private Speedcam speedcam;
 
-    @ManyToOne
-    @JoinColumn(name= "id_registry")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_registry", nullable = false)
     private Registry registry;
 
     public Fine() {
