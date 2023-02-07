@@ -2,6 +2,7 @@ package com.example.Speedcam.Speedcam.entity;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Registry {
@@ -15,6 +16,9 @@ public class Registry {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_detail")
     private Detail detail;
+
+    @OneToMany
+    private List<Fine> fineList;
 
     public Registry(Integer id, String name, String surname, Detail detail) {
         this.id = id;
