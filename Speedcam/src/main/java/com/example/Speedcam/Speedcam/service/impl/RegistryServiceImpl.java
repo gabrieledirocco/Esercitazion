@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,8 +30,15 @@ public class RegistryServiceImpl implements RegistryService {
 
     @Override
     public List<RegistryDTO> getAllRegistry() {
+        List<RegistryDTO> registry= new ArrayList<>();
+        List<Registry> r= registryRepository.findAll();
 
-        return this.mapperDTO.toDtoRegistryList(registryRepository.findAll());
+
+        for (Registry r2 : r) {
+            RegistryDTO r3 = mapperDTO.RegistryToRegistryDTO(r2);
+            registry.add(r3);
+        }
+        return registry;
     }
 
     @Override

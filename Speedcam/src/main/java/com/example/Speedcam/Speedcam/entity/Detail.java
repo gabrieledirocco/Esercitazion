@@ -1,6 +1,8 @@
 package com.example.Speedcam.Speedcam.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +18,7 @@ public class Detail {
     private String phoneNumber;
     @Column(name = "address", nullable = false)
     private String address;
+//    @JsonIgnore
     @OneToOne(mappedBy = "detail", cascade = CascadeType.ALL)
     private Registry registry;
 

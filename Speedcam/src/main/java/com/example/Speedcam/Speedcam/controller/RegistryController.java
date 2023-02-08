@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/registry")
-public class RegistryController {
+public class  RegistryController {
     @Autowired
     private RegistryService registryService;
     @GetMapping

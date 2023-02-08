@@ -27,6 +27,7 @@ public class SpeedcamServiceImpl implements SpeedcamService{
 
     @Override
     public List<SpeedcamDTO> getAllSpeedcam() {
+
         return this.mapperDTO.toDtoSpeedcamList(speedcamRepository.findAll());
     }
 

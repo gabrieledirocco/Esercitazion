@@ -8,12 +8,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class MapperDTO {
 
-    public DetailDTO DetailToDetaiDto(Detail detail) {
+    public DetailDTO DetailToDetailDto(Detail detail) {
         DetailDTO detailDTO = new DetailDTO();
 
         detailDTO.setId(detail.getId());
@@ -43,7 +42,7 @@ public class MapperDTO {
         }
         List<DetailDTO> list = new ArrayList<>(detail.size());
         for (Detail d : detail) {
-            list.add(DetailToDetaiDto(d));
+            list.add(DetailToDetailDto(d));
         }
         return list;
     }
