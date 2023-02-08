@@ -40,7 +40,7 @@ public class SpeedcamServiceImpl implements SpeedcamService{
     }
 
     @Override
-    public void updateSpeedcam(Integer id, Speedcam s) throws NotFoundException {
+    public void update(Integer id, Speedcam s) throws NotFoundException {
         Speedcam speedcam = findSpeedcamById(id);
         if(speedcam==null){
             throw new NotFoundException("Speedcam not found");
@@ -50,7 +50,7 @@ public class SpeedcamServiceImpl implements SpeedcamService{
     }
 
     @Override
-    public void deleteSpeedcam(Integer id) throws NotFoundException {
+    public void delete(Integer id) throws NotFoundException {
         Speedcam speedcam = findSpeedcamById(id);
         if(speedcam==null){
             throw new NotFoundException("Speedcam not found");

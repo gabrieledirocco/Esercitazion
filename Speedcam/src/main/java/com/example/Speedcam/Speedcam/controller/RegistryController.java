@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Registry")
+@RequestMapping("/registry")
 public class RegistryController {
     @Autowired
     private RegistryService registryService;
