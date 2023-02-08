@@ -60,4 +60,12 @@ public class Detail {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public Registry getRegistry() {
+        return registry;
+    }
+
+    public void setRegistry(Registry registry) {
+        this.registry = registry;
+    }
 }

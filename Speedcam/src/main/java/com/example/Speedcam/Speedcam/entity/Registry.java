@@ -22,6 +22,9 @@ public class Registry {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "registry", cascade = CascadeType.ALL)
     private List<Fine> fineList;
 
+    public Registry() {
+    }
+
     public Registry(Integer id, String name, String surname, Detail detail) {
         this.id = id;
         this.name = name;

@@ -8,6 +8,9 @@ public class RegistryDTO {
     private String surname;
     private Detail detail;
 
+    public RegistryDTO() {
+    }
+
     public RegistryDTO(Integer id, String name, String surname, Detail detail) {
         this.id = id;
         this.name = name;
@@ -46,4 +49,8 @@ public class RegistryDTO {
     public void setDetail(Detail detail) {
         this.detail = detail;
     }
+
+
+
+
 }

@@ -1,12 +1,12 @@
 package com.example.Speedcam.Speedcam.entity.mapperDTO;
 
-public class SpeedCamDto {
+public class SpeedcamDTO {
     private Integer id;
     private String location;
 
-    public SpeedCamDto() {
+    public SpeedcamDTO() {
     }
-    public SpeedCamDto(Integer id, String location) {
+    public SpeedcamDTO(Integer id, String location) {
         this.id = id;
         this.location = location;
     }

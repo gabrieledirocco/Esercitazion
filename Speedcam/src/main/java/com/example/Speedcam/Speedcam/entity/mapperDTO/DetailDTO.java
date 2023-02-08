@@ -2,18 +2,18 @@ package com.example.Speedcam.Speedcam.entity.mapperDTO;
 
 import com.example.Speedcam.Speedcam.entity.Registry;
 
-public class DetailDto {
+public class DetailDTO {
     private Integer id;
     private String fiscalCode;
     private String phoneNumber;
     private String address;
     private Registry registry;
 
-    public DetailDto() {
+    public DetailDTO() {
 
     }
 
-    public DetailDto(Integer id, String fiscalCode, String phoneNumber, String address, Registry registry) {
+    public DetailDTO(Integer id, String fiscalCode, String phoneNumber, String address, Registry registry) {
         this.id = id;
         this.fiscalCode = fiscalCode;
         this.phoneNumber = phoneNumber;
@@ -60,4 +60,6 @@ public class DetailDto {
     public void setRegistry(Registry registry) {
         this.registry = registry;
     }
+
+
 }

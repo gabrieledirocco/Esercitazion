@@ -1,19 +1,17 @@
 package com.example.Speedcam.Speedcam.entity.mapperDTO;
 
-import com.example.Speedcam.Speedcam.entity.Registry;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class FineDto {
+public class FineDTO {
     private Integer id;
     private LocalDateTime date;
     private LocalDate deadline;
 
-    public FineDto() {
+    public FineDTO() {
     }
 
-    public FineDto(Integer id, LocalDateTime date, LocalDate deadline) {
+    public FineDTO(Integer id, LocalDateTime date, LocalDate deadline) {
         this.id = id;
         this.date = date;
         this.deadline = deadline;
