@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class MapperDTO {
@@ -47,7 +48,7 @@ public class MapperDTO {
         return list;
     }
 
-    public FineDTO FineToFineDTO(Fine fine) {
+    public FineDTO fineToFineDTO(Fine fine) {
         FineDTO fineDTO = new FineDTO();
 
         fineDTO.setId(fine.getId());
@@ -71,7 +72,7 @@ public class MapperDTO {
         }
         List<FineDTO> list = new ArrayList<>(fine.size());
         for (Fine f : fine) {
-            list.add(FineToFineDTO(f));
+            list.add(fineToFineDTO(f));
         }
         return list;
     }
@@ -128,4 +129,7 @@ public class MapperDTO {
         }
         return list;
     }
+
+
+
 }
