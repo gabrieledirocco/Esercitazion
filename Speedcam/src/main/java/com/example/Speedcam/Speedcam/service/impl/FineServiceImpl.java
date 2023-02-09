@@ -24,7 +24,6 @@ public class FineServiceImpl implements FineService {
 
     @Override
     public Fine create(Fine fine) {
-//        fineRepository.save(fine);
         return fineRepository.save(fine);
 
     }

@@ -23,8 +23,8 @@ public class SpeedcamServiceImpl implements SpeedcamService {
 
     @Override
     public Speedcam create(Speedcam speedcam) {
-        speedcamRepository.save(speedcam);
-        return speedcam;
+        return speedcamRepository.save(speedcam);
+
     }
 
     @Override

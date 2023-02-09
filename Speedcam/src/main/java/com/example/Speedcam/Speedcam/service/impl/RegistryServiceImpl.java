@@ -25,7 +25,6 @@ public class RegistryServiceImpl implements RegistryService {
 
     @Override
     public Registry create(Registry registry) {
-//        registryRepository.save(registry);
         return registryRepository.save(registry);
     }
 
