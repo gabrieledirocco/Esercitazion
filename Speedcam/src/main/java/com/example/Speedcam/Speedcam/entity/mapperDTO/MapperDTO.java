@@ -12,7 +12,7 @@ import java.util.List;
 @Component
 public class MapperDTO {
 
-    public DetailDTO DetailToDetailDto(Detail detail) {
+    public DetailDTO detailToDetailDto(Detail detail) {
         DetailDTO detailDTO = new DetailDTO();
 
         detailDTO.setId(detail.getId());
@@ -25,7 +25,7 @@ public class MapperDTO {
 
     }
 
-    public Detail DetailDTOToDetail(DetailDTO detailDTO) {
+    public Detail detailDTOToDetail(DetailDTO detailDTO) {
         Detail detail = new Detail();
         detail.setId(detailDTO.getId());
         detail.setFiscalCode(detailDTO.getFiscalCode());
@@ -42,7 +42,7 @@ public class MapperDTO {
         }
         List<DetailDTO> list = new ArrayList<>(detail.size());
         for (Detail d : detail) {
-            list.add(DetailToDetailDto(d));
+            list.add(detailToDetailDto(d));
         }
         return list;
     }
@@ -57,7 +57,7 @@ public class MapperDTO {
         return fineDTO;
     }
 
-    public Fine FineDTOToFine(FineDTO fineDTO) {
+    public Fine fineDTOToFine(FineDTO fineDTO) {
         Fine fine = new Fine();
         fine.setId(fineDTO.getId());
         fine.setDate(fineDTO.getDate());
@@ -65,18 +65,7 @@ public class MapperDTO {
         return fine;
     }
 
-    public List<FineDTO> toDtoFineList(List<Fine> fine) {
-        if (fine == null) {
-            return null;
-        }
-        List<FineDTO> list = new ArrayList<>(fine.size());
-        for (Fine f : fine) {
-            list.add(fineToFineDTO(f));
-        }
-        return list;
-    }
-
-    public RegistryDTO RegistryToRegistryDTO(Registry registry) {
+    public RegistryDTO registryToRegistryDTO(Registry registry) {
         RegistryDTO registryDTO = new RegistryDTO();
         registryDTO.setId(registry.getId());
         registryDTO.setName(registry.getName());
@@ -84,7 +73,7 @@ public class MapperDTO {
         registryDTO.setDetail(registry.getDetail());
         return registryDTO;
     }
-    public Registry RegystryDTOToRegistry(RegistryDTO registryDTO) {
+    public Registry regystryDTOToRegistry(RegistryDTO registryDTO) {
         Registry registry = new Registry();
         registry.setId(registryDTO.getId());
         registry.setName(registryDTO.getName());
@@ -93,41 +82,20 @@ public class MapperDTO {
         return registry;
     }
 
-    public List<RegistryDTO> toDtoRegistryList(List<Registry> registry) {
-        if (registry == null) {
-            return null;
-        }
-        List<RegistryDTO> list = new ArrayList<>(registry.size());
-        for (Registry r : registry) {
-            list.add(RegistryToRegistryDTO(r));
-        }
-        return list;
-    }
-
-    public SpeedcamDTO SpeedcamToSpeedcamDTO(Speedcam speedcam){
+    public SpeedcamDTO speedcamToSpeedcamDTO(Speedcam speedcam){
         SpeedcamDTO speedCamDTO = new SpeedcamDTO();
         speedCamDTO.setId(speedcam.getId());
         speedCamDTO.setLocation(speedcam.getLocation());
         return speedCamDTO;
     }
 
-    public Speedcam SpeedcamDTOToSpeedcam(SpeedcamDTO speedcamDTO){
+    public Speedcam speedcamDTOToSpeedcam(SpeedcamDTO speedcamDTO){
         Speedcam speedcam = new Speedcam();
         speedcam.setId(speedcamDTO.getId());
         speedcam.setLocation(speedcam.getLocation());
         return speedcam;
     }
 
-    public List<SpeedcamDTO> toDtoSpeedcamList(List<Speedcam> speedcam) {
-        if (speedcam == null) {
-            return null;
-        }
-        List<SpeedcamDTO> list = new ArrayList<>(speedcam.size());
-        for (Speedcam s : speedcam) {
-            list.add(SpeedcamToSpeedcamDTO(s));
-        }
-        return list;
-    }
 
 
 

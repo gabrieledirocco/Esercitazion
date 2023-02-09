@@ -19,7 +19,7 @@ public class Registry {
     @JoinColumn(name = "id_detail")
     private Detail detail;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "registry", cascade = CascadeType.ALL)
+    @OneToMany( mappedBy = "registry")
     private List<Fine> fineList;
 
     public Registry() {

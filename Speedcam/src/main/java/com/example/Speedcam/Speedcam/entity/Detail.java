@@ -18,7 +18,7 @@ public class Detail {
     private String phoneNumber;
     @Column(name = "address", nullable = false)
     private String address;
-//    @JsonIgnore
+    @JsonIgnore
     @OneToOne(mappedBy = "detail", cascade = CascadeType.ALL)
     private Registry registry;
 

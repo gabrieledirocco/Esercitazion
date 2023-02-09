@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,21 +21,32 @@ public class FineServiceImpl implements FineService {
     private FineRepository fineRepository;
     @Autowired
     private MapperDTO mapperDTO;
+
     @Override
     public Fine create(Fine fine) {
-        fineRepository.save(fine);
-        return fine;
+//        fineRepository.save(fine);
+        return fineRepository.save(fine);
+
     }
 
     @Override
     public List<FineDTO> getAllFine() {
-        return this.mapperDTO.toDtoFineList(fineRepository.findAll());
+        List<Fine> fineList = fineRepository.findAll();
+
+        if (fineList == null) {
+            return null;
+        }
+        List<FineDTO> fineDTOList = new ArrayList<>();
+        for (Fine fine : fineList) {
+            fineDTOList.add(mapperDTO.fineToFineDTO(fine));
+        }
+        return fineDTOList;
     }
 
     @Override
     public Fine findFineById(Integer id) throws NotFoundException {
         Optional<Fine> f = fineRepository.findById(id);
-        if(f.isEmpty()){
+        if (f.isEmpty()) {
             throw new NotFoundException("Fine with incorrect id");
         }
         return f.get();
@@ -43,7 +55,7 @@ public class FineServiceImpl implements FineService {
     @Override
     public void update(Integer id, Fine f) throws NotFoundException {
         Fine fine = findFineById(id);
-        if(fine==null){
+        if (fine == null) {
             throw new NotFoundException("Fine with incorrect id");
         }
         fine.setDate(f.getDate());
@@ -54,7 +66,7 @@ public class FineServiceImpl implements FineService {
     @Override
     public void delete(Integer id) throws NotFoundException {
         Fine f = findFineById(id);
-        if(f==null){
+        if (f == null) {
             throw new NotFoundException("Fine with incorrect id");
         }
         fineRepository.delete(f);

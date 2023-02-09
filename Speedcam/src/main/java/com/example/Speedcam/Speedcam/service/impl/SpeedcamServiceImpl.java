@@ -9,16 +9,18 @@ import com.example.Speedcam.Speedcam.service.SpeedcamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class SpeedcamServiceImpl implements SpeedcamService{
+public class SpeedcamServiceImpl implements SpeedcamService {
 
     @Autowired
     private SpeedcamRepository speedcamRepository;
     @Autowired
     private MapperDTO mapperDTO;
+
     @Override
     public Speedcam create(Speedcam speedcam) {
         speedcamRepository.save(speedcam);
@@ -28,13 +30,22 @@ public class SpeedcamServiceImpl implements SpeedcamService{
     @Override
     public List<SpeedcamDTO> getAllSpeedcam() {
 
-        return this.mapperDTO.toDtoSpeedcamList(speedcamRepository.findAll());
+        List<Speedcam> speedcamList = speedcamRepository.findAll();
+
+        if (speedcamList == null) {
+            return null;
+        }
+        List<SpeedcamDTO> speedcamDTOList = new ArrayList<>();
+        for (Speedcam speedcam : speedcamList) {
+            speedcamDTOList.add(mapperDTO.speedcamToSpeedcamDTO(speedcam));
+        }
+        return speedcamDTOList;
     }
 
     @Override
     public Speedcam findSpeedcamById(Integer id) throws NotFoundException {
         Optional<Speedcam> s = speedcamRepository.findById(id);
-        if(s.isEmpty()){
+        if (s.isEmpty()) {
             throw new NotFoundException("Speedcam not found");
         }
         return s.get();
@@ -43,20 +54,11 @@ public class SpeedcamServiceImpl implements SpeedcamService{
     @Override
     public void update(Integer id, Speedcam s) throws NotFoundException {
         Speedcam speedcam = findSpeedcamById(id);
-        if(speedcam==null){
+        if (speedcam == null) {
             throw new NotFoundException("Speedcam not found");
         }
         speedcam.setLocation(s.getLocation());
 
-    }
-
-    @Override
-    public void delete(Integer id) throws NotFoundException {
-        Speedcam speedcam = findSpeedcamById(id);
-        if(speedcam==null){
-            throw new NotFoundException("Speedcam not found");
-        }
-        speedcamRepository.delete(speedcam);
     }
 
 

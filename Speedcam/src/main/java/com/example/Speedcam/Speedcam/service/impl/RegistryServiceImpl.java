@@ -22,29 +22,31 @@ public class RegistryServiceImpl implements RegistryService {
     private RegistryRepository registryRepository;
     @Autowired
     private MapperDTO mapperDTO;
+
     @Override
     public Registry create(Registry registry) {
-        registryRepository.save(registry);
-        return registry;
+//        registryRepository.save(registry);
+        return registryRepository.save(registry);
     }
 
     @Override
     public List<RegistryDTO> getAllRegistry() {
-        List<RegistryDTO> registry= new ArrayList<>();
-        List<Registry> r= registryRepository.findAll();
+        List<Registry> registryList = registryRepository.findAll();
 
-
-        for (Registry r2 : r) {
-            RegistryDTO r3 = mapperDTO.RegistryToRegistryDTO(r2);
-            registry.add(r3);
+        if (registryList == null) {
+            return null;
         }
-        return registry;
+        List<RegistryDTO> registryDTOList = new ArrayList<>();
+        for (Registry registry : registryList) {
+            registryDTOList.add(mapperDTO.registryToRegistryDTO(registry));
+        }
+        return registryDTOList;
     }
 
     @Override
-    public Registry findRegistryById(Integer id)throws NotFoundException {
+    public Registry findRegistryById(Integer id) throws NotFoundException {
         Optional<Registry> r = registryRepository.findById(id);
-        if(r.isEmpty()){
+        if (r.isEmpty()) {
             throw new NotFoundException("Registry not found");
         }
         return r.get();
@@ -53,7 +55,7 @@ public class RegistryServiceImpl implements RegistryService {
     @Override
     public void update(Integer id, Registry r) throws NotFoundException {
         Registry registry = findRegistryById(id);
-        if(registry==null){
+        if (registry == null) {
             throw new NotFoundException("Registry not found");
         }
         registry.setName(r.getName());
@@ -65,7 +67,7 @@ public class RegistryServiceImpl implements RegistryService {
     @Override
     public void delete(Integer id) throws NotFoundException {
         Registry r = findRegistryById(id);
-        if(r==null){
+        if (r == null) {
             throw new NotFoundException("Registry not found");
         }
         registryRepository.delete(r);

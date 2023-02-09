@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "speedcam")
+@Table(name = "speed_cam")
 public class Speedcam {
     @Id
     @Column(name = "id")
@@ -12,23 +12,23 @@ public class Speedcam {
     private Integer id;
     @Column(name = "location", nullable = false)
     private String location;
-    @OneToMany(mappedBy = "speedcam", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "speedcam")
     private List<Fine> fineList;
 
     public Speedcam() {
     }
 
-    public Speedcam(int id, String location, List<Fine> fineList) {
+    public Speedcam(Integer id, String location, List<Fine> fineList) {
         this.id = id;
         this.location = location;
         this.fineList = fineList;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

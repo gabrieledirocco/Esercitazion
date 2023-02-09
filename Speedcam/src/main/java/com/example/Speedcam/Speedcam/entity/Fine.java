@@ -22,24 +22,26 @@ public class Fine {
     private Speedcam speedcam;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id_registry", nullable = false)
+    @JoinColumn(name = "id_registry")
     private Registry registry;
 
     public Fine() {
     }
 
-    public Fine(int id, LocalDateTime date, LocalDate deadline, Speedcam speedcam) {
+
+    public Fine(Integer id, LocalDateTime date, LocalDate deadline, Speedcam speedcam, Registry registry) {
         this.id = id;
         this.date = date;
         this.deadline = deadline;
         this.speedcam = speedcam;
+        this.registry = registry;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -65,5 +67,13 @@ public class Fine {
 
     public void setSpeedcam(Speedcam speedcam) {
         this.speedcam = speedcam;
+    }
+
+    public Registry getRegistry() {
+        return registry;
+    }
+
+    public void setRegistry(Registry registry) {
+        this.registry = registry;
     }
 }

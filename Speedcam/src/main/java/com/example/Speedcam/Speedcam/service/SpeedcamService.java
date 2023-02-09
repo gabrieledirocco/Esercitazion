@@ -14,5 +14,4 @@ public interface SpeedcamService {
     List<SpeedcamDTO> getAllSpeedcam();
     Speedcam findSpeedcamById(Integer id) throws NotFoundException;
     void update(Integer id, Speedcam fine) throws NotFoundException;
-    void delete(Integer id) throws NotFoundException;
 }

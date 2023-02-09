@@ -36,8 +36,5 @@ public class SpeedcamController {
     public void updateSpeedcam(@PathVariable("id") Integer id, @RequestBody Speedcam speedcam) throws NotFoundException {
         speedcamService.update(id, speedcam);
     }
-    @DeleteMapping("/{id}")
-    public void deleteRegistry(@PathVariable("id") Integer id) throws NotFoundException {
-        speedcamService.delete(id);
-    }
+
 }
