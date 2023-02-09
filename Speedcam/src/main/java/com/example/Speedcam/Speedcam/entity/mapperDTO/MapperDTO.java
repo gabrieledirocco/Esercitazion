@@ -6,9 +6,6 @@ import com.example.Speedcam.Speedcam.entity.Registry;
 import com.example.Speedcam.Speedcam.entity.Speedcam;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Component
 public class MapperDTO {
 
@@ -36,16 +33,7 @@ public class MapperDTO {
         return detail;
     }
 
-    public List<DetailDTO> toDtoDetailList(List<Detail> detail) {
-        if (detail == null) {
-            return null;
-        }
-        List<DetailDTO> list = new ArrayList<>(detail.size());
-        for (Detail d : detail) {
-            list.add(detailToDetailDto(d));
-        }
-        return list;
-    }
+
 
     public FineDTO fineToFineDTO(Fine fine) {
         FineDTO fineDTO = new FineDTO();
