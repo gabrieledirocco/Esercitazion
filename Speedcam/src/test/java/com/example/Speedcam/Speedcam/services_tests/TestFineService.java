@@ -8,8 +8,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
+
+
+import java.util.Optional;
+
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
 public class TestFineService {
@@ -18,7 +23,6 @@ public class TestFineService {
     private FineServiceImpl service;
     @Mock
     private FineRepository repo;
-
     @Mock
     private MapperDTO mapper;
 
@@ -35,10 +39,66 @@ public class TestFineService {
     void testCreateFineMethod_NullPointerException() {
 
         Fine fine = new Fine();
-        Mockito.when(repo.save(fine)).thenThrow(new NullPointerException());
+        when(repo.save(fine))
+                .thenThrow(new NullPointerException());
 
         Assertions.assertThrows(NullPointerException.class, () ->
                 service.create(fine));
+    }
+
+    @Test
+    void testGetAllFine(){
+        Assertions.assertDoesNotThrow(()->
+                service.getAllFine());
+    }
+
+    @Test
+    void testFindById() {
+        Fine fine = new Fine();
+
+        Integer id = anyInt();
+        when(repo.findById(id))
+                .thenReturn(Optional.of(fine));
+
+        Assertions.assertDoesNotThrow(() -> {
+            service.findFineById(id);
+        });
+    }
+
+    @Test
+    void testFindById_NullPointerException() {
+        Fine fine = new Fine();
+        Integer id = anyInt();
+        when(repo.findById(id))
+                .thenThrow(new NullPointerException());
+
+        Assertions.assertThrows(NullPointerException.class, () ->
+                service.findFineById(id));
+    }
+
+    @Test
+    void testUpdate() {
+        Fine fine = new Fine();
+        Integer id = anyInt();
+
+        when(repo.findById(id))
+                .thenReturn(Optional.of(fine));
+
+        Assertions.assertDoesNotThrow(() -> {
+            service.update(id, fine);
+        });
+    }
+
+    @Test
+    void testUpdate_NullPointerException() {
+        Fine fine = new Fine();
+        Integer id = anyInt();
+
+        when(repo.findById(id))
+                .thenThrow(new NullPointerException());
+
+        Assertions.assertThrows(NullPointerException.class, () ->
+                service.update(id, fine));
     }
 }
 
